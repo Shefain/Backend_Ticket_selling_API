@@ -1,27 +1,13 @@
-// Dependencies
 const express = require('express');
+const publicroute = require('./public')
 
-const app = express()
+const app = express();
 
-
-
-app.use(express.json(), express.static('./public'))
-
-
-app.get('/',(req, res )=>{
-
-  res.send(" it's from home page ")
-
-})
-
-app.post('/',(req,res)=>{
-  console.log(req.body)
-  res.send()
-})
+app.use('/public',publicroute)
 
 
 
 
 app.listen(4000, ()=>{
-  console.log( 'app is listening....')
+  console.log(' its litening____')
 })
