@@ -7,8 +7,8 @@ const myDB = require('../db/db');
 router
   .route('/i/:ticketid')
   .get((req, res) => {
-    
-    const ticket = myDB.findByID(req.params.ticketid);
+    const ticketId = req.params.ticketid;
+    const ticket = myDB.findById(ticketId);
     res.status(200).json({ message: 'successfull', ticket });
   })
   .patch((req, res) => {

@@ -1,6 +1,6 @@
 
 const myDB = require('../db/db');
-  myDB.createTicket('user 1', 10);
+  // myDB.createTicket('user 1', 10);
 // myDB.createTicket('user 2', 10);
 // myDB.createTicket('user 4', 10);
 // myDB.createTicket('user 4', 10);
@@ -16,4 +16,4 @@ const myDB = require('../db/db');
   const tickets = myDB.find();
   console.log('All Tickets', tickets);
   const winners = myDB.draw(2);
-  // console.log('Winners', winners);
+   console.log('Winners', winners);

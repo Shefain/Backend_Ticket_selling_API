@@ -37,9 +37,9 @@ class MyDB {
    *
    * @returns all available ticktes
    */
-  // find() {
-  //   return this.tickets;
-  // }
+  find() {
+    return this.tickets;
+  }
 
   /**
    *
@@ -47,7 +47,7 @@ class MyDB {
    * @param {string} username
    * @returns a ticket object
    */
-	findByID(ticketId) {
+	findById(ticketId) {
 		const ticket = this.tickets.find(
 			/**
 			 * @param {Ticket} ticket
@@ -84,24 +84,17 @@ class MyDB {
 
   }
 
-  /**
-   *
-   * @param {number} id
-   * @param {{username: string, price: number}} ticketBody
-   */
-  // updateById(id, ticketBody) {
-  //   let ticket = this.findByID(id);
-  //   ticket.username = ticketBody.username ?? ticket.username;
-  //   ticket.price = ticketBody.price ?? ticket.price;
-  //   ticket.updatedAt = new Date();
-
-  //   return ticket;
-  // }
+ /**
+  * 
+  * @param {number} ticketId 
+  * @param {object} ticketBody 
+  * @returns 
+  */
 	updateById(ticketId, ticketBody) {
-		let ticket = this.findByID(ticketId);
+		let ticket = this.findById(ticketId);
     console.log(ticket)
-		ticket.username = ticketBody.username ?? ticket.username;
-		ticket.price = ticketBody.price ?? ticket.price;
+		ticket.username = ticketBody.username || ticket.username;
+		ticket.price = ticketBody.price || ticket.price;
 		ticket.updatedAt = new Date();
 		return ticket;
 	}
