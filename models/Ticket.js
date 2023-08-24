@@ -1,3 +1,4 @@
+const shortid = require('shortid')
 class Ticket{
   /**
    * 
@@ -5,7 +6,7 @@ class Ticket{
    * @param {number} price 
    */
   constructor(username,price){
-    this.id = Math.floor(Math.random()*99999999)
+    this.id = shortid()
     this.username = username;
     this.price = price;
     this.createdAt = new Date();

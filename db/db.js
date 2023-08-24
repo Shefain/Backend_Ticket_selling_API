@@ -32,13 +32,14 @@ class MyDB {
     }
     return result;
   }
+
   /**
    *
    * @returns all available ticktes
    */
-  find() {
-    return this.tickets;
-  }
+  // find() {
+  //   return this.tickets;
+  // }
 
   /**
    *
@@ -46,11 +47,16 @@ class MyDB {
    * @param {string} username
    * @returns a ticket object
    */
-  findByID(TicketId) {
-    const ticket = this.tickets.find((ticket) => ticket.id === TicketId);
-    return ticket;
-  }
+	findByID(ticketId) {
+		const ticket = this.tickets.find(
+			/**
+			 * @param {Ticket} ticket
+			 */
+			(ticket) => ticket.id === ticketId
+		);
 
+		return ticket;
+	}
   /**
    *
    * @param {string} username
@@ -63,20 +69,42 @@ class MyDB {
     return tickets;
   }
 
+  deletByUsername(username){
+    const match = [];
+    this.tickets.map((ticket, index)=>{
+      if (ticket.username == username){
+        match.push(index)
+      }
+    })
+    if(match.length != -0){
+      return match.reverse().map((index)=> this.tickets.splice(index,1))
+    }else{
+      return "Couldn't delete tickets , please check your username again"
+    }
+
+  }
+
   /**
    *
    * @param {number} id
    * @param {{username: string, price: number}} ticketBody
    */
-  updateById(id, ticketBody) {
-    const ticket = this.findByID(id);
-    ticket.username = ticketBody.username ?? ticket.username;
-    ticket.price = ticketBody.price ?? ticket.price;
-    ticket.updatedAt = new Date();
+  // updateById(id, ticketBody) {
+  //   let ticket = this.findByID(id);
+  //   ticket.username = ticketBody.username ?? ticket.username;
+  //   ticket.price = ticketBody.price ?? ticket.price;
+  //   ticket.updatedAt = new Date();
 
-    return ticket;
-  }
-
+  //   return ticket;
+  // }
+	updateById(ticketId, ticketBody) {
+		let ticket = this.findByID(ticketId);
+    console.log(ticket)
+		ticket.username = ticketBody.username ?? ticket.username;
+		ticket.price = ticketBody.price ?? ticket.price;
+		ticket.updatedAt = new Date();
+		return ticket;
+	}
   /**
    *
    * @param {number} id

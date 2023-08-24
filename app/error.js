@@ -5,7 +5,7 @@ const notFoundHandaler =(_req,_res,next)=>{
   next(error)
 }
 
-const errorHandaler = (error,req,res,next)=>{
+const errorHandaler = (error,_req,res,_next)=>{
   if(error.status){
     return res.status(error.status).json({
       message: error.message
@@ -17,5 +17,3 @@ const errorHandaler = (error,req,res,next)=>{
  module.exports = {
   notFoundHandaler,errorHandaler
  }
-
- 
