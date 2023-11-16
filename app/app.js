@@ -17,4 +17,5 @@ module.exports = app;
 
 
 
-// we need make app separate for testing and if you want to run in different protocol http/https
+
+//We have to separate the app so that later we can do some testing & run our app into different protocols like HTTP/HTTPS
